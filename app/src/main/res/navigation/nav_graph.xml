@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/test">
+
+    <fragment
+        android:id="@+id/test"
+        android:name="com.example.interclassg20.cure.Test"
+        android:label="fragment_test"
+        tools:layout="@layout/fragment_test"
+        >
+        <action
+            android:id="@+id/toConsultationDetails"
+            app:destination="@id/consultationDetails"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/consultationDetails"
+        android:name="com.example.interclassg20.cure.ConsultationDetails"
+        android:label="fragment_consultation_details"
+        tools:layout="@layout/fragment_consultation_details" />
+</navigation>
