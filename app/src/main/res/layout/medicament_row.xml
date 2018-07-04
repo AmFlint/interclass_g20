@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="9dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/informations"
+            android:textColor="#283b5b"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif medium"
+            android:text="- Pravastine 20 mg"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/treament"
+            android:textColor="#9b9b9b"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            android:layout_marginLeft="5dp"
+            android:text=": 1 comprimé le soir"
+            />
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>
