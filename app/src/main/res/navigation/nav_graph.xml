@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/test">
+    app:startDestination="@id/consultationHistory">
 
     <fragment
         android:id="@+id/test"
@@ -26,9 +26,22 @@
         android:name="com.example.interclassg20.cure.ConsultationDetails"
         android:label="fragment_consultation_details"
         tools:layout="@layout/fragment_consultation_details" />
+
+    <fragment
+        android:id="@+id/ordonnance"
+        android:name="com.example.interclassg20.cure.Ordonnance"
+        android:label="fragment_ordonnance"
+        tools:layout="@layout/fragment_ordonnance"
+        />
+
     <fragment
         android:id="@+id/consultationHistory"
         android:name="com.example.interclassg20.cure.ConsultationHistory"
         android:label="fragment_consultation_history"
-        tools:layout="@layout/fragment_consultation_history" />
+        tools:layout="@layout/fragment_consultation_history">
+        <action
+            android:id="@+id/toOrdonnance"
+            app:destination="@id/ordonnance"
+            />
+    </fragment>>
 </navigation>

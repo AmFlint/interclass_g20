@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">cure</string>
 
+    <string name="ordonnance_name">Retour</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
