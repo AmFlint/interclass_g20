@@ -7,22 +7,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import kotlinx.android.synthetic.main.fragment_consultation_history.*
 import kotlinx.android.synthetic.main.fragment_test.*
 
-class Test : Fragment() {
+class ConsultationHistory : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_test, container, false)
+        return inflater.inflate(R.layout.fragment_consultation_history, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        // Execute toConsultationDetails action, navigate to consultationDetails fragment on click
-        changeBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.toConsultationDetails))
-
-        consultationHistoryBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.toConsultationHistory))
+        to_ordonnance.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.toOrdonnance))
     }
 }
