@@ -8,4 +8,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="BorderGreenButton" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:background">@drawable/border_green_button</item>
+    </style>
+
+    <style name="BorderGreenyBlueButton" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:background">@drawable/border_greeny_blue_button</item>
+    </style>
+
 </resources>

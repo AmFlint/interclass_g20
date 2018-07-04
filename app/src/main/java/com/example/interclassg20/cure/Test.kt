@@ -22,5 +22,7 @@ class Test : Fragment() {
 
         // Execute toConsultationDetails action, navigate to consultationDetails fragment on click
         changeBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.toConsultationDetails))
+
+        consultationHistoryBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.toConsultationHistory))
     }
 }

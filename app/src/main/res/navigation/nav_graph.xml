@@ -15,6 +15,10 @@
             android:id="@+id/toConsultationDetails"
             app:destination="@id/consultationDetails"
             />
+        <action
+            android:id="@+id/toConsultationHistory"
+            app:destination="@id/consultationHistory"
+            />
     </fragment>
 
     <fragment
@@ -22,4 +26,9 @@
         android:name="com.example.interclassg20.cure.ConsultationDetails"
         android:label="fragment_consultation_details"
         tools:layout="@layout/fragment_consultation_details" />
+    <fragment
+        android:id="@+id/consultationHistory"
+        android:name="com.example.interclassg20.cure.ConsultationHistory"
+        android:label="fragment_consultation_history"
+        tools:layout="@layout/fragment_consultation_history" />
 </navigation>
