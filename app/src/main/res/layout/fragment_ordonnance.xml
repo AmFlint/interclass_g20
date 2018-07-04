@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="20dp"
-    android:paddingRight="20dp"
+    android:background="#fff"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <!-- Consultation Details -->
@@ -14,6 +13,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="20dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
         >
         <ImageView
             android:id="@+id/doctor_image"
@@ -31,7 +32,6 @@
             android:layout_gravity="center_vertical"
             app:layout_constraintLeft_toRightOf="@+id/doctor_image"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
             android:text="Dr. Georges"
             android:textColor="#283b5b"
             android:textSize="16sp"
@@ -45,12 +45,13 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="@+id/doctor"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="16dp"
         android:text="Fait le 26/10/2019"
         android:textSize="16sp"
         android:textColor="#bbbabb"
         android:fontFamily="sans-serif"
         android:textStyle="normal"
+        android:layout_marginRight="20dp"
         />
 
     <TextView
@@ -67,6 +68,7 @@
         android:textColor="#283b5b"
         android:textSize="16sp"
         android:lineSpacingExtra="5dp"
+        android:layout_marginRight="20dp"
         />
 
     <!-- Divider -->
@@ -92,6 +94,7 @@
         android:fontFamily="sans-serif-medium"
         android:textStyle="normal"
         android:textSize="16sp"
+        android:paddingLeft="20dp"
         />
 
     <!-- Treament List -->
@@ -103,6 +106,7 @@
         android:layout_marginTop="25dp"
         android:divider="@null"
         android:dividerHeight="0dp"
+        android:paddingLeft="20dp"
         />
 
     <!-- Divider -->
@@ -116,56 +120,246 @@
         />
 
     <!-- Group of Actions -->
-
-    <!-- Commander Button -->
-    <Button
-        android:id="@+id/commandBtn"
-        android:layout_width="0dp"
+    <FrameLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Commander"
         app:layout_constraintTop_toBottomOf="@+id/divider_actions"
-        android:layout_marginTop="30dp"
-        android:background="#3caaa2"
-        android:paddingRight="15dp"
-        android:paddingLeft="15dp"
-        android:fontFamily="sans-serif medium"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textColor="#FFF"
-        android:textAllCaps="false"
-        android:textSize="14sp"
-        />
+        >
 
-    <!-- Print Button -->
-    <Button
-        android:id="@+id/printBtn"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/commandBtn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp"
-        android:text="Imprimer"
-        android:background="#21898b"
-        android:textColor="#FFF"
-        android:textAllCaps="false"
-        android:textSize="14sp"
-        />
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:background="#FFF"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_marginTop="30dp"
+            >
 
-    <!-- Add to rappels Button -->
-    <Button
-        android:id="@+id/rappelsBtn"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/printBtn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp"
-        android:background="#0bb07b"
-        android:text="Ajouter la posologie aux rappels"
-        android:textColor="#FFF"
-        android:textSize="14sp"
-        android:textAllCaps="false"
-        />
+            <!-- Group of Actions -->
+
+            <!-- Commander Button -->
+            <LinearLayout
+                android:id="@+id/command_btn"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:background="#3caaa2"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                >
+
+                <ImageView
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:src="@drawable/ic_shopping_cart_black_24dp"
+                    android:layout_gravity="center"
+                    />
+
+                <TextView
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:text="Commander"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="#FFF"
+                    android:textAllCaps="false"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <!-- Print Button -->
+            <LinearLayout
+                android:id="@+id/print_btn"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:background="#21898b"
+                android:layout_marginTop="20dp"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                >
+
+                <ImageView
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:src="@drawable/ic_print_black_24dp"
+                    />
+
+                <TextView
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:text="Imprimer"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="#FFF"
+                    android:textAllCaps="false"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <!-- Add to rappels Button -->
+            <LinearLayout
+                android:id="@+id/rappels_btn"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:background="#0bb07b"
+                android:layout_marginTop="20dp"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                >
+
+                <ImageView
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:src="@drawable/ic_add_alert_black_24dp"
+                    />
+
+                <TextView
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:text="Ajouter la posologie aux rappels"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="#FFF"
+                    android:textSize="16sp"
+                    android:textAllCaps="false"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/commandActions"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@android:color/white"
+            android:paddingTop="20dp"
+            >
+
+            <!-- Informations -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_info_black_24dp"
+                    />
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:text="Votre mode de commande :"
+                    android:textSize="16sp"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="#283b5b"
+                    android:layout_marginLeft="10dp"
+                    />
+
+            </LinearLayout>
+
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:background="#e5e5e5"
+                />
+
+            <LinearLayout
+                android:id="@+id/delivery_btn"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:background="#3caaa2"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                >
+
+                <ImageView
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:src="@drawable/ic_local_shipping_white_24dp"
+                    />
+
+                <TextView
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:text="Livraison Express"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="#FFF"
+                    android:textAllCaps="false"
+                    android:textSize="16sp"
+                    />
+            </LinearLayout>
+
+            <!-- Add to rappels Button -->
+            <LinearLayout
+                android:id="@+id/pharmacy_btn"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:background="#21898b"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                >
+
+                <ImageView
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:src="@drawable/ic_directions_walk_white_24dp"
+                    />
+
+                <TextView
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:text="Chercher en pharmacie"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="#FFF"
+                    android:textSize="16sp"
+                    android:textAllCaps="false"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </FrameLayout>
+
 
 </android.support.constraint.ConstraintLayout>

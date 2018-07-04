@@ -17,8 +17,7 @@
             android:id="@+id/informations"
             android:textColor="#283b5b"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:fontFamily="sans-serif medium"
+            android:fontFamily="sans-serif-medium"
             android:text="- Pravastine 20 mg"
             />
 

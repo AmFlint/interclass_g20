@@ -29,7 +29,17 @@ class Ordonnance : Fragment() {
                 Medicament ("Paracétamol", 2, "g", "1 comprimé le soir")
         )
 
-        medical_list.adapter = MedicamentAdapter(requireActivity(), medicaments) // pass Activity context
+        medical_list.adapter = MedicamentAdapter(requireActivity(), medicaments)
+
+        commandActions.visibility = View.INVISIBLE
+
+        command_btn.setOnClickListener(View.OnClickListener {
+            commandActions.visibility = View.VISIBLE
+        })
+
+//        val actionBar = requireActivity().actionBar
+////        actionBar.title = R.string.ordonnance_name.toString()
+        requireActivity().setTitle(R.string.ordonnance_name)
     }
 
     /**
