@@ -21,18 +21,6 @@
             />
     </fragment>
 
-    <fragment
-        android:id="@+id/consultationDetails"
-        android:name="com.example.interclassg20.cure.ConsultationDetails"
-        android:label="fragment_consultation_details"
-        tools:layout="@layout/fragment_consultation_details" />
-
-    <fragment
-        android:id="@+id/ordonnance"
-        android:name="com.example.interclassg20.cure.Ordonnance"
-        android:label="fragment_ordonnance"
-        tools:layout="@layout/fragment_ordonnance"
-        />
 
     <fragment
         android:id="@+id/consultationHistory"
@@ -43,5 +31,47 @@
             android:id="@+id/toOrdonnance"
             app:destination="@id/ordonnance"
             />
-    </fragment>>
+    </fragment>
+
+    <fragment
+        android:id="@+id/consultationDetails"
+        android:name="com.example.interclassg20.cure.ConsultationDetails"
+        android:label="fragment_consultation_details"
+        tools:layout="@layout/fragment_consultation_details" />
+
+    <fragment
+        android:id="@+id/ordonnance"
+        android:name="com.example.interclassg20.cure.Ordonnance"
+        android:label="fragment_ordonnance"
+        tools:layout="@layout/fragment_ordonnance">
+        <action
+            android:id="@+id/toCardLoader"
+            app:destination="@id/cardLoader"
+            />
+        <action
+            android:id="@+id/toDeliveryLoader"
+            app:destination="@id/deliveryLoader"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/cardLoader"
+        android:name="com.example.interclassg20.cure.CardLoaderActivity"
+        android:label="fragment_card_loader"
+        tools:layout="@layout/fragment_card_loader">
+    <action
+        android:id="@+id/toOrdonnance"
+        app:destination="@id/ordonnance"
+        />
+    </fragment>
+    <fragment
+        android:id="@+id/deliveryLoader"
+        android:name="com.example.interclassg20.cure.DeliveryLoaderActivity"
+        android:label="fragment_delivery_loader"
+        tools:layout="@layout/fragment_delivery_loader">
+        <action
+            android:id="@+id/toOrdonnance"
+            app:destination="@id/ordonnance"
+            />
+    </fragment>
 </navigation>

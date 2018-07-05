@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import androidx.navigation.Navigation
+import kotlinx.android.synthetic.main.fragment_consultation_history.*
 import kotlinx.android.synthetic.main.fragment_ordonnance.*
 import kotlinx.android.synthetic.main.fragment_test.*
 
@@ -23,6 +24,9 @@ class Ordonnance : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        delivery_btn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.toCardLoader))
+        pharmacy_btn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.toDeliveryLoader))
 
         val medicaments: Array<Medicament> = arrayOf(
                 Medicament ("Pravastine", 20, "mg", "3 comprimés par jours"),
