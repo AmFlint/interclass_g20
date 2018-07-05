@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_consultation_history.*
-import kotlinx.android.synthetic.main.fragment_test.*
 
 class ConsultationHistory : Fragment() {
 

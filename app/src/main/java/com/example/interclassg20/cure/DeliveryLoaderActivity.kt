@@ -11,7 +11,6 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_card_loader.*
-import kotlinx.android.synthetic.main.fragment_test.*
 
 class DeliveryLoaderActivity : Fragment() {
 

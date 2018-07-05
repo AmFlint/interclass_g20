@@ -6,23 +6,6 @@
     app:startDestination="@id/ordonnance">
 
     <fragment
-        android:id="@+id/test"
-        android:name="com.example.interclassg20.cure.Test"
-        android:label="fragment_test"
-        tools:layout="@layout/fragment_test"
-        >
-        <action
-            android:id="@+id/toConsultationDetails"
-            app:destination="@id/consultationDetails"
-            />
-        <action
-            android:id="@+id/toConsultationHistory"
-            app:destination="@id/consultationHistory"
-            />
-    </fragment>
-
-
-    <fragment
         android:id="@+id/consultationHistory"
         android:name="com.example.interclassg20.cure.ConsultationHistory"
         android:label="fragment_consultation_history"
@@ -32,12 +15,6 @@
             app:destination="@id/ordonnance"
             />
     </fragment>
-
-    <fragment
-        android:id="@+id/consultationDetails"
-        android:name="com.example.interclassg20.cure.ConsultationDetails"
-        android:label="fragment_consultation_details"
-        tools:layout="@layout/fragment_consultation_details" />
 
     <fragment
         android:id="@+id/ordonnance"
@@ -67,6 +44,10 @@
         <action
             android:id="@+id/toItineraryConfirmation"
             app:destination="@id/itineraryConfirmation"
+            />
+        <action
+            android:id="@+id/toDeliveryConfirmation"
+            app:destination="@id/deliveryConfirmation"
             />
     </fragment>
 
@@ -134,6 +115,24 @@
             android:name="pharmacy_address"
             android:defaultValue="Address pharmacy"
             app:type="string"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/deliveryConfirmation"
+        android:name="com.example.interclassg20.cure.DeliveryConfirmation"
+        android:label="fragment_delivery_confirmation"
+        tools:layout="@layout/fragment_delivery_confirmation">
+        <action
+            android:id="@+id/fromCmdToOrdonnance"
+            app:destination="@id/ordonnance" />
+        <action
+            android:id="@+id/fromDeliveryConfirmationToDelivery1"
+            app:destination="@id/delivery1"
+            />
+        <action
+            android:id="@+id/fromDeliveryConfirmationToOrdonnance"
+            app:destination="@id/ordonnance"
             />
     </fragment>
 
