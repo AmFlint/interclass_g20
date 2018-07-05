@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingRight="20dp"
+        android:paddingTop="20dp"
+        >
+
+        <View
+            android:id="@+id/availability_indicator"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:background="#0bb07b"
+            android:layout_marginTop="2dp"
+            />
+
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
+            >
+            <!-- Medicament Name -->
+            <TextView
+                android:id="@+id/order_item_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pravastine 20 mg"
+                android:textSize="14sp"
+                android:textColor="#283b5b"
+                android:fontFamily="sans-serif-medium"
+                />
+
+            <!-- Description -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:maxWidth="230dp"
+                android:textColor="#959DAB"
+                android:textSize="14sp"
+                android:text="Cras mattis consectetur purus sit amet fermentum…"
+                />
+
+        </LinearLayout>
+
+        <!-- price -->
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_marginBottom="30dp"
+            >
+            <!-- Item Price -->
+            <TextView
+                android:id="@+id/order_item_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5.33€"
+                android:textColor="#283b5b"
+                android:textSize="14sp"
+                android:layout_gravity="end"
+                />
+
+            <!-- Reduction -->
+            <TextView
+                android:id="@+id/order_item_reduction"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="- 5.33€"
+                android:layout_marginTop="2dp"
+                android:textSize="14sp"
+                android:textColor="#21898b"
+                android:textStyle="italic"
+                android:layout_gravity="end"
+                />
+
+            <!-- Final Price -->
+            <TextView
+                android:id="@+id/order_item_final_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="0.00€"
+                android:textSize="18sp"
+                android:textColor="#283b5b"
+                android:layout_gravity="end"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>
