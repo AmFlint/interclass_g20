@@ -67,14 +67,14 @@
             android:gravity="center_horizontal"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
-            android:text="Nous recherchons une pharmacie qui pourras au mieux répondre à votre ordonnance."
+            android:text="Nous recherchons une pharmacie qui pourra répondre au mieux à votre ordonnance."
             android:textColor="@color/dark_grey_blue"
             android:textSize="14sp"
             android:textStyle="normal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3"
-            tools:text="Nous recherchons une pharmacie qui pourras au mieux répondre à votre ordonnance." />
+            tools:text="Nous recherchons une pharmacie qui pourra répondre au mieux à votre ordonnance." />
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout

@@ -21,5 +21,8 @@ class Delivery1Activity : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         pillsBottleImage.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.toDelivery2))
+        deliveryManImage.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.toDelivery2))
+        deliveryDoneImage.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.toDelivery2))
+        backButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.toOrdonnance))
     }
 }

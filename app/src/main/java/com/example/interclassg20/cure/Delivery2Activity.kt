@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
-import kotlinx.android.synthetic.main.fragment_delivery_1.*
+import kotlinx.android.synthetic.main.fragment_delivery_2.*
 
 
 class Delivery2Activity : Fragment() {
@@ -20,6 +20,9 @@ class Delivery2Activity : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        deliveryManImage.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.toOrdonnance))
+        pillsBottleImage.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.toDelivery3))
+        deliveryManImage.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.toDelivery3))
+        deliveryDoneImage.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.toDelivery3))
+        backButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.toDelivery1))
     }
 }

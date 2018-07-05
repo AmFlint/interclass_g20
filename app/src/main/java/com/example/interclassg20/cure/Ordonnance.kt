@@ -30,7 +30,7 @@ class Ordonnance : Fragment() {
         print_btn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.toDelivery1))
 
         val medicaments: Array<Medicament> = arrayOf(
-                Medicament ("Pravastine", 20, "mg", "3 comprimés par jours"),
+                Medicament ("Pravastine", 20, "mg", "3 comprimés par jour"),
                 Medicament ("Paracétamol", 2, "g", "1 comprimé le soir")
         )
 
