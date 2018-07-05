@@ -25,7 +25,7 @@ class Ordonnance : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        delivery_btn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.toDelivery1))
+        delivery_btn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.toDeliveryConfirmation))
         pharmacy_btn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.fromOrdonnanceToSearchPharmacy))
 
         val medicaments: Array<Medicament> = arrayOf(

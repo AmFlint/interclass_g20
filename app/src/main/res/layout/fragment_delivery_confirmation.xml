@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:fillViewport="true"
+        android:paddingTop="20dp"
+        android:paddingBottom="30dp"
+        >
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            >
+
+
+            <LinearLayout
+                android:id="@+id/delivery_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                >
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="Votre commande en :"
+                    android:textSize="22sp"
+                    android:textColor="#9FA7B4"
+                    />
+
+                <TextView
+                    android:id="@+id/delivery_confirmation_pharmacy_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Livraison"
+                    android:textColor="#283b5b"
+                    android:fontFamily="sans-serif-medium"
+                    android:textSize="22sp"
+                    />
+            </LinearLayout>
+
+            <!-- Divider -->
+            <View
+                android:id="@+id/divider_delivery_name"
+                android:layout_height="1dp"
+                android:layout_width="match_parent"
+                app:layout_constraintTop_toBottomOf="@+id/delivery_header"
+                android:layout_marginTop="20dp"
+                android:background="@color/grey_white"
+                />
+
+            <!-- List of orders -->
+            <ListView
+                android:id="@+id/delivery_order_items_list"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider_delivery_name"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="20dp"
+                />
+
+            <!-- Divider -->
+            <View
+                android:id="@+id/divider_order_list"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                app:layout_constraintTop_toBottomOf="@+id/delivery_order_items_list"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:background="@color/grey_white"
+                />
+
+            <!-- Delivery Fees -->
+            <!--<LinearLayout-->
+                <!--android:id="@+id/delivery_fees"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--app:layout_constraintTop_toBottomOf="@+id/divider_order_list"-->
+                <!--android:paddingLeft="20dp"-->
+                <!--android:paddingTop="20dp"-->
+                <!--android:paddingBottom="20dp"-->
+                <!--android:orientation="horizontal"-->
+                <!--&gt;-->
+
+                <ImageView
+                    android:id="@+id/delivery_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/divider_order_list"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/ic_local_shipping_dark_blue_24dp"
+                    android:layout_gravity="center_vertical"
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toRightOf="@+id/delivery_icon"
+                    app:layout_constraintTop_toTopOf="@+id/delivery_icon"
+                    android:layout_marginLeft="10dp"
+                    android:text="Livraison"
+                    android:textSize="16sp"
+                    android:textColor="@color/dark_grey_blue"
+                    android:fontFamily="sans-serif-medium"
+                    />
+
+
+                <TextView
+                    android:id="@+id/delivery_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/delivery_icon"
+                    android:layout_marginRight="20dp"
+                    android:text="10,00€"
+                    android:textSize="18sp"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/dark_grey_blue"
+                    />
+
+            <!--</LinearLayout>-->
+            
+            <!-- Divider -->
+            <View
+                android:id="@+id/divider_delivery"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                app:layout_constraintTop_toBottomOf="@+id/delivery_price"
+                android:layout_marginTop="15dp"
+                android:background="@color/grey_white"
+                />
+
+            <!-- Total Price -->
+            <include
+                android:id="@+id/delivery_total_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/order_item_row"
+                app:layout_constraintTop_toBottomOf="@+id/divider_delivery"
+                />
+
+            <!-- Divider -->
+            <View
+                android:id="@+id/divider_price"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                app:layout_constraintTop_toBottomOf="@+id/delivery_total_price"
+                android:layout_marginTop="15dp"
+                android:background="@color/grey_white"
+                />
+
+            <!-- Actions -->
+
+            <!-- Commander -->
+            <LinearLayout
+                android:id="@+id/delivery_button"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider_price"
+                android:orientation="horizontal"
+                android:background="@drawable/border_greeny_blue_button"
+                android:layout_marginTop="30dp"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                >
+
+                <ImageView
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:src="@drawable/ic_shopping_cart_black_24dp"
+                    />
+
+                <TextView
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:text="Commander"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="#FFF"
+                    android:textAllCaps="false"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <!-- Cancel -->
+            <Button
+                android:id="@+id/delivery_cancel_command"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/delivery_button"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/border_red_button"
+                android:text="Annuler"
+                android:textColor="#fff"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                />
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>
