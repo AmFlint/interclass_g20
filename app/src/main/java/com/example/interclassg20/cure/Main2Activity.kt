@@ -73,9 +73,7 @@ class Main2Activity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
             R.id.nav_share -> {
 
             }
-            R.id.nav_send -> {
 
-            }
         }
 
         drawer_layout.closeDrawer(GravityCompat.START)
