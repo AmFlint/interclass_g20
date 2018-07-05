@@ -52,7 +52,7 @@ class CommandConfirmation : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         cancel_command.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.fromCmdToOrdonnance))
-        command_button.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.toCardLoader))
+        command_button.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.fromCmdToSearchPharmacy))
 
         order_items_list.adapter = OrderAdapter(requireActivity(), mOrders)
 

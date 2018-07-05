@@ -94,9 +94,8 @@ class SearchPharmacy : Fragment(), OnMapReadyCallback, GoogleMap.OnInfoWindowCli
     override fun onMapReady(googleM: GoogleMap) {
         gMap = googleM
         val heticLatLng = LatLng(48.852281, 2.420647)
-        placeMarker(heticLatLng, "Hetic")
         moveCamera(heticLatLng)
-        googleM.animateCamera(CameraUpdateFactory.zoomTo(15f))
+        googleM.animateCamera(CameraUpdateFactory.zoomTo(13f))
 
         googleM.setOnInfoWindowClickListener(this);
     }
