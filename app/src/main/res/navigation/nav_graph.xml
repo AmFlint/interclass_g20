@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/ordonnance">
+    app:startDestination="@id/searchPharmacy">
 
     <fragment
         android:id="@+id/test"
@@ -91,6 +91,18 @@
         <action
             android:id="@+id/fromCmdToOrdonnance"
             app:destination="@id/ordonnance"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/searchPharmacy"
+        android:name="com.example.interclassg20.cure.SearchPharmacy"
+        android:label="fragment_search_pharmacy"
+        tools:layout="@layout/fragment_search_pharmacy"
+        >
+        <action
+            android:id="@+id/fromMapToCmdConfirmation"
+            app:destination="@id/commandConfirmation"
             />
     </fragment>
 </navigation>
