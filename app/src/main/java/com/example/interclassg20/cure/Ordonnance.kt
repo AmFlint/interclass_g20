@@ -29,8 +29,8 @@ class Ordonnance : Fragment() {
         pharmacy_btn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.toDeliveryLoader))
 
         val medicaments: Array<Medicament> = arrayOf(
-                Medicament ("Pravastine", 20, "mg", "3 comprimés par jours"),
-                Medicament ("Paracétamol", 2, "g", "1 comprimé le soir")
+                Medicament ("Pravastine", 20, "mg", "3 comprimés par jours", 3.50f),
+                Medicament ("Paracétamol", 2, "g", "1 comprimé le soir", 4.99f)
         )
 
         medical_list.adapter = MedicamentAdapter(requireActivity(), medicaments)
@@ -90,17 +90,19 @@ class Ordonnance : Fragment() {
     }
 }
 
-class Medicament(name: String, dose: Int, indice: String, treatment: String) {
+class Medicament(name: String, dose: Int, indice: String, treatment: String, price: Float) {
     val mName: String
     val mDose: Int
     val mIndice: String
     val mTreament: String
+    val mPrice: Float
 
     init {
         mName = name
         mDose = dose
         mIndice  = indice
         mTreament = treatment
+        mPrice = price
     }
 
     fun getInformations(): String {
