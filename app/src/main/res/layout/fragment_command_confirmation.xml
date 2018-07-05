@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:fillViewport="true"
+        android:paddingTop="20dp"
+        android:paddingBottom="30dp"
+        >
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            >
+
+
+            <LinearLayout
+                android:id="@+id/command_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                >
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="Votre commande à :"
+                    android:textSize="22sp"
+                    android:textColor="#9FA7B4"
+                    />
+
+                <TextView
+                    android:id="@+id/command_confirmation_pharmacy_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Pharmacie de l'Ourcq"
+                    android:textColor="#283b5b"
+                    android:fontFamily="sans-serif-medium"
+                    android:textSize="22sp"
+                    />
+            </LinearLayout>
+
+            <!-- Divider -->
+            <View
+                android:id="@+id/divider_command_name"
+                android:layout_height="1dp"
+                android:layout_width="match_parent"
+                app:layout_constraintTop_toBottomOf="@+id/command_header"
+                android:layout_marginTop="20dp"
+                android:background="#e5e5e5"
+                />
+
+            <!-- List of orders -->
+            <ListView
+                android:id="@+id/order_items_list"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider_command_name"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="20dp"
+                />
+
+            <!-- Divider -->
+            <View
+                android:id="@+id/divider_order_list"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                app:layout_constraintTop_toBottomOf="@+id/order_items_list"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:background="#e5e5e5"
+                />
+
+            <!-- Total Price -->
+            <include
+                android:id="@+id/total_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/order_item_row"
+                app:layout_constraintTop_toBottomOf="@+id/divider_order_list"
+                />
+
+            <!-- Divider -->
+            <View
+                android:id="@+id/divider_price"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                app:layout_constraintTop_toBottomOf="@+id/total_price"
+                android:layout_marginTop="15dp"
+                android:background="#e5e5e5"
+                />
+
+            <!-- Actions -->
+
+            <!-- Commander -->
+            <LinearLayout
+                android:id="@+id/command_button"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider_price"
+                android:orientation="horizontal"
+                android:background="@drawable/border_greeny_blue_button"
+                android:layout_marginTop="30dp"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                >
+
+                <ImageView
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:src="@drawable/ic_shopping_cart_black_24dp"
+                    />
+
+                <TextView
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:text="Commander"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="#FFF"
+                    android:textAllCaps="false"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <!-- Cancel -->
+            <Button
+                android:id="@+id/cancel_command"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/command_button"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/border_red_button"
+                android:text="Annuler"
+                android:textColor="#fff"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                />
+
+
+
+        </android.support.constraint.ConstraintLayout>
+
+
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>

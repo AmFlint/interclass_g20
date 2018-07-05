@@ -3,23 +3,213 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/test">
+    app:startDestination="@id/ordonnance">
 
     <fragment
-        android:id="@+id/test"
-        android:name="com.example.interclassg20.cure.Test"
-        android:label="fragment_test"
-        tools:layout="@layout/fragment_test"
-        >
+        android:id="@+id/consultationHistory"
+        android:name="com.example.interclassg20.cure.ConsultationHistory"
+        android:label="fragment_consultation_history"
+        tools:layout="@layout/fragment_consultation_history">
         <action
-            android:id="@+id/toConsultationDetails"
-            app:destination="@id/consultationDetails"
+            android:id="@+id/toOrdonnance"
+            app:destination="@id/ordonnance"
             />
     </fragment>
 
     <fragment
-        android:id="@+id/consultationDetails"
-        android:name="com.example.interclassg20.cure.ConsultationDetails"
-        android:label="fragment_consultation_details"
-        tools:layout="@layout/fragment_consultation_details" />
+        android:id="@+id/ordonnance"
+        android:name="com.example.interclassg20.cure.Ordonnance"
+        android:label="fragment_ordonnance"
+        tools:layout="@layout/fragment_ordonnance">
+        <action
+            android:id="@+id/toCardLoader"
+            app:destination="@id/cardLoader"
+            />
+        <action
+            android:id="@+id/toDeliveryLoader"
+            app:destination="@id/deliveryLoader"
+            />
+        <action
+            android:id="@+id/toCommandConfirmation"
+            app:destination="@id/commandConfirmation"
+            />
+        <action
+            android:id="@+id/toDelivery1"
+            app:destination="@id/delivery1"
+            />
+        <action
+            android:id="@+id/fromOrdonnanceToSearchPharmacy"
+            app:destination="@id/searchPharmacy"
+            />
+        <action
+            android:id="@+id/toItineraryConfirmation"
+            app:destination="@id/itineraryConfirmation"
+            />
+        <action
+            android:id="@+id/toDeliveryConfirmation"
+            app:destination="@id/deliveryConfirmation"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/cardLoader"
+        android:name="com.example.interclassg20.cure.CardLoaderActivity"
+        android:label="fragment_card_loader"
+        tools:layout="@layout/fragment_card_loader">
+    <action
+        android:id="@+id/toOrdonnance"
+        app:destination="@id/ordonnance"
+        />
+    <action
+        android:id="@+id/fromClToDeliveryLoader"
+        app:destination="@id/deliveryLoader"
+        />
+    <action
+        android:id="@+id/fromClToItinerary"
+        app:destination="@id/itineraryConfirmation"
+        />
+    <argument
+        android:name="pharmacy_name"
+        android:defaultValue="Pharmacie de l'Ourcq"
+        app:type="string"
+        />
+    <argument
+        android:name="pharmacy_address"
+        android:defaultValue="pharmacuie address"
+        app:type="string"
+        />
+    </fragment>
+    <fragment
+        android:id="@+id/deliveryLoader"
+        android:name="com.example.interclassg20.cure.DeliveryLoaderActivity"
+        android:label="fragment_delivery_loader"
+        tools:layout="@layout/fragment_delivery_loader">
+        <action
+            android:id="@+id/toOrdonnance"
+            app:destination="@id/ordonnance"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/commandConfirmation"
+        android:name="com.example.interclassg20.cure.CommandConfirmation"
+        android:label="fragment_command_confirmation"
+        tools:layout="@layout/fragment_command_confirmation">
+        <action
+            android:id="@+id/toCardLoader"
+            app:destination="@id/cardLoader"
+            />
+        <action
+            android:id="@+id/fromCmdToOrdonnance"
+            app:destination="@id/ordonnance" />
+        <action
+            android:id="@+id/fromCmdToSearchPharmacy"
+            app:destination="@id/searchPharmacy"
+            />
+        <argument
+            android:name="pharmacy_name"
+            android:defaultValue="Pharmacie de l'Ourcq"
+            app:type="string"
+            />
+        <argument
+            android:name="pharmacy_address"
+            android:defaultValue="Address pharmacy"
+            app:type="string"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/deliveryConfirmation"
+        android:name="com.example.interclassg20.cure.DeliveryConfirmation"
+        android:label="fragment_delivery_confirmation"
+        tools:layout="@layout/fragment_delivery_confirmation">
+        <action
+            android:id="@+id/fromCmdToOrdonnance"
+            app:destination="@id/ordonnance" />
+        <action
+            android:id="@+id/fromDeliveryConfirmationToDelivery1"
+            app:destination="@id/delivery1"
+            />
+        <action
+            android:id="@+id/fromDeliveryConfirmationToOrdonnance"
+            app:destination="@id/ordonnance"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/delivery1"
+        android:name="com.example.interclassg20.cure.Delivery1Activity"
+        android:label="fragment_delivery_1"
+        tools:layout="@layout/fragment_delivery_1">
+        <action
+            android:id="@+id/toDelivery2"
+            app:destination="@id/delivery2"
+            />
+        <action
+            android:id="@+id/toOrdonnance"
+            app:destination="@id/ordonnance"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/searchPharmacy"
+        android:name="com.example.interclassg20.cure.SearchPharmacy"
+        android:label="fragment_search_pharmacy"
+        tools:layout="@layout/fragment_search_pharmacy"
+        >
+        <action
+            android:id="@+id/fromMapToCmdConfirmation"
+            app:destination="@id/commandConfirmation" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/delivery2"
+        android:name="com.example.interclassg20.cure.Delivery2Activity"
+        android:label="fragment_delivery_2"
+        tools:layout="@layout/fragment_delivery_2">
+        <action
+            android:id="@+id/toDelivery1"
+            app:destination="@id/delivery1"
+            />
+        <action
+            android:id="@+id/toDelivery3"
+            app:destination="@id/delivery3"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/delivery3"
+        android:name="com.example.interclassg20.cure.Delivery3Activity"
+        android:label="fragment_delivery_3"
+        tools:layout="@layout/fragment_delivery_3">
+        <action
+            android:id="@+id/toDelivery2"
+            app:destination="@id/delivery2"
+            />
+        <action
+            android:id="@+id/toOrdonnance"
+            app:destination="@id/ordonnance"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/itineraryConfirmation"
+        android:name="com.example.interclassg20.cure.ItineraryConfirmationActivity"
+        android:label="fragment_itinerary_confirmation"
+        tools:layout="@layout/fragment_itinerary_confirmation">
+        <action
+            android:id="@+id/toOrdonnance"
+            app:destination="@id/ordonnance"
+            />
+        <argument
+            android:name="pharmacy_name"
+            android:defaultValue="Pharmacie de l'Ourcq"
+            app:type="string"
+            />
+        <argument
+            android:name="pharmacy_address"
+            android:defaultValue="address pharmacy"
+            app:type="string"
+            />
+    </fragment>
 </navigation>
