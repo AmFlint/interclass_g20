@@ -52,6 +52,10 @@
             android:id="@+id/toDeliveryLoader"
             app:destination="@id/deliveryLoader"
             />
+        <action
+            android:id="@+id/toDelivery"
+            app:destination="@id/delivery"
+            />
     </fragment>
 
     <fragment
@@ -69,6 +73,17 @@
         android:name="com.example.interclassg20.cure.DeliveryLoaderActivity"
         android:label="fragment_delivery_loader"
         tools:layout="@layout/fragment_delivery_loader">
+        <action
+            android:id="@+id/toOrdonnance"
+            app:destination="@id/ordonnance"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/delivery"
+        android:name="com.example.interclassg20.cure.DeliveryActivity"
+        android:label="fragment_delivery"
+        tools:layout="@layout/fragment_delivery">
         <action
             android:id="@+id/toOrdonnance"
             app:destination="@id/ordonnance"

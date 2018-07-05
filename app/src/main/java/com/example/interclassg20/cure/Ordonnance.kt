@@ -27,6 +27,7 @@ class Ordonnance : Fragment() {
 
         delivery_btn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.toCardLoader))
         pharmacy_btn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.toDeliveryLoader))
+        print_btn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.toDelivery))
 
         val medicaments: Array<Medicament> = arrayOf(
                 Medicament ("Pravastine", 20, "mg", "3 comprimés par jours"),
