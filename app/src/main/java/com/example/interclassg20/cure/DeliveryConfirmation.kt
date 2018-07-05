@@ -12,7 +12,8 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
-import kotlinx.android.synthetic.main.fragment_command_confirmation.*
+import kotlinx.android.synthetic.main.fragment_delivery_confirmation.*
+import kotlinx.android.synthetic.main.fragment_delivery_confirmation.*
 import org.w3c.dom.Text
 import kotlin.math.roundToInt
 import kotlin.math.roundToLong
@@ -20,7 +21,7 @@ import kotlin.math.roundToLong
 /**
  * Command Confirmation Screen - Summary of cart (all chemicals) + price
  */
-class CommandConfirmation : Fragment() {
+class DeliveryConfirmation : Fragment() {
 
     private var mOrders: Array<OrderItem>
     private var mDescription: String
@@ -46,31 +47,33 @@ class CommandConfirmation : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_command_confirmation, container, false)
+        return inflater.inflate(R.layout.fragment_delivery_confirmation, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Display Pharmacy Name from which user is ordering chemicals
-        val pharmacyName = arguments!!.getString("pharmacy_name")
-        command_confirmation_pharmacy_name.text = pharmacyName
+        delivery_total_price.findViewById<TextView>(R.id.order_item_description).text = "Le prix total prend en compte les réductions ainsi que les frais de livraison"
+
 
         // Navigate to Pharmacy Loader Screen with pharmacy name as arg
-        command_button.setOnClickListener({
-            val bundle = Bundle()
-            bundle.putString("pharmacy_name", pharmacyName)
-            bundle.putString("pharmacy_address", arguments!!.getString("pharmacy_address"))
-            it.findNavController().navigate(R.id.toCardLoader, bundle)
-        })
+        delivery_button.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.fromDeliveryConfirmationToDelivery1))
 
-        cancel_command.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.fromCmdToSearchPharmacy))
+        delivery_cancel_command.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.fromCmdToSearchPharmacy))
 
-        order_items_list.adapter = OrderAdapter(requireActivity(), mOrders)
+        delivery_order_items_list.adapter = OrderAdapter(requireActivity(), mOrders)
 
-        var listParams = order_items_list.layoutParams
+        var listParams = delivery_order_items_list.layoutParams
         listParams.height = (mOrders.size * 370) + (20 * mOrders.size)
         setUpTotal()
+        delivery_price.text = "%.2f".format(getDeliveryPrice()) + "€"
+    }
+
+    /**
+     * Delivery Price - calculated from total price
+     */
+    fun getDeliveryPrice(): Float {
+        return getNotReductedPrice() * .15f
     }
 
     /**
@@ -78,25 +81,25 @@ class CommandConfirmation : Fragment() {
      */
     private fun setUpTotal() {
         // hide availability indicator
-        val indicator = total_price.findViewById<View>(R.id.availability_indicator)
+        val indicator = delivery_total_price.findViewById<View>(R.id.availability_indicator)
         indicator.visibility = View.INVISIBLE
 
         // Set up Titlte
-        val title = total_price.findViewById<TextView>(R.id.order_item_title)
+        val title = delivery_total_price.findViewById<TextView>(R.id.order_item_title)
         title.text = "Total"
         title.textSize = 20f
 
 
         // Set up price
-        val price = total_price.findViewById<TextView>(R.id.order_item_price)
+        val price = delivery_total_price.findViewById<TextView>(R.id.order_item_price)
         price.text = "%.2f".format(getNotReductedPrice()) + "€"
 
         // set up reduction
-        val reduction = total_price.findViewById<TextView>(R.id.order_item_reduction)
+        val reduction = delivery_total_price.findViewById<TextView>(R.id.order_item_reduction)
         reduction.text = "- " + "%.2f".format(getTotalReduction()) + "€"
 
         // Set up total price
-        val total = total_price.findViewById<TextView>(R.id.order_item_final_price)
+        val total = delivery_total_price.findViewById<TextView>(R.id.order_item_final_price)
         val totalPrice = getTotalPrice()
         total.text = "%.2f".format(totalPrice) + "€"
         total.textSize = 24f
@@ -106,7 +109,7 @@ class CommandConfirmation : Fragment() {
      * get Total price form order items list
      */
     private fun getTotalPrice(): Float {
-        return getNotReductedPrice() - getTotalReduction()
+        return getNotReductedPrice() + getDeliveryPrice() - getTotalReduction()
     }
 
     /**
@@ -246,28 +249,5 @@ class CommandConfirmation : Fragment() {
         private fun formatFloat(nb: Float): String {
             return "%.2f".format(nb)
         }
-    }
-}
-
-/**
- * Order Item Object
- */
-class OrderItem(medicament: Medicament) {
-    val mMedicament: Medicament
-
-    init {
-        mMedicament = medicament
-    }
-
-    fun getTotalPrice(): Float {
-        return mMedicament.getAvailableChemical().getTotalPrice()
-    }
-
-    fun getReduction(): Float {
-        return mMedicament.getAvailableChemical().mReduction
-    }
-
-    fun getPrice(): Float {
-        return mMedicament.getAvailableChemical().mPrice
     }
 }

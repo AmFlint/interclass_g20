@@ -68,6 +68,10 @@
             android:id="@+id/toItineraryConfirmation"
             app:destination="@id/itineraryConfirmation"
             />
+        <action
+            android:id="@+id/toDeliveryConfirmation"
+            app:destination="@id/deliveryConfirmation"
+            />
     </fragment>
 
     <fragment
@@ -134,6 +138,20 @@
             android:name="pharmacy_address"
             android:defaultValue="Address pharmacy"
             app:type="string"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/deliveryConfirmation"
+        android:name="com.example.interclassg20.cure.DeliveryConfirmation"
+        android:label="fragment_delivery_confirmation"
+        tools:layout="@layout/fragment_delivery_confirmation">
+        <action
+            android:id="@+id/fromCmdToOrdonnance"
+            app:destination="@id/ordonnance" />
+        <action
+            android:id="@+id/fromDeliveryConfirmationToDelivery1"
+            app:destination="@id/delivery1"
             />
     </fragment>
 
