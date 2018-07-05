@@ -17,29 +17,35 @@ import kotlinx.android.synthetic.main.fragment_delivery_confirmation.*
 import org.w3c.dom.Text
 import kotlin.math.roundToInt
 import kotlin.math.roundToLong
+import com.example.interclassg20.cure.models.Medicament
+import com.example.interclassg20.cure.models.OrderItem
+import com.example.interclassg20.cure.services.OrderItemService
+import com.example.interclassg20.cure.adapters.OrderAdapter
 
 /**
  * Command Confirmation Screen - Summary of cart (all chemicals) + price
  */
 class DeliveryConfirmation : Fragment() {
 
+    /**
+     * Activity Order lines
+     */
     private var mOrders: Array<OrderItem>
+
+    /**
+     * Main Description
+     */
     private var mDescription: String
 
+    /**
+     * Order Item Service - Interact with order items
+     */
+    val mOrderItemService: OrderItemService
+
     init {
-        val medicaments: Array<Medicament> = arrayOf(
-                Medicament ("Pravastine", 20, "mg", "3 comprimés par jours", 3.50f, "2 jours", true, 3.50f),
-                Medicament ("Paracétamol", 2, "g", "1 comprimé le soir", 4.99f, "1 jour", false, 0f),
-                Medicament ("Antibiotique", 4, "g", "2 comprimé le soir", 12.99f, "", false, 0f)
-        )
+        mOrderItemService = OrderItemService()
 
-        medicaments[2].mReplacement = Medicament("Doliprane", 500, "mg", "2 comprimés par jours", 6.99f, "2 jours", true, 5.50f)
-
-        mOrders =  arrayOf(
-                OrderItem (medicaments[0]),
-                OrderItem (medicaments[1]),
-                OrderItem (medicaments[2])
-        )
+        mOrders = mOrderItemService.getOrderItems()
         // Initialize Command description
         mDescription = ""
     }
@@ -59,7 +65,7 @@ class DeliveryConfirmation : Fragment() {
         // Navigate to Pharmacy Loader Screen with pharmacy name as arg
         delivery_button.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.fromDeliveryConfirmationToDelivery1))
 
-        delivery_cancel_command.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.fromCmdToSearchPharmacy))
+        delivery_cancel_command.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.fromDeliveryConfirmationToOrdonnance))
 
         delivery_order_items_list.adapter = OrderAdapter(requireActivity(), mOrders)
 
@@ -138,116 +144,5 @@ class DeliveryConfirmation : Fragment() {
         }
 
         return totalPrice
-    }
-
-    /**
-     * Order Adapter - ListView adapter for order items (chemical drugs)
-     */
-    private class OrderAdapter(context: Context, orderItems: Array<OrderItem>): BaseAdapter() {
-        private val mContext: Context
-        private val mOrders: Array<OrderItem>
-
-        init {
-            mContext = context
-            mOrders = orderItems
-        }
-
-        override fun getCount(): Int {
-            return mOrders.size
-        }
-
-        override fun getItem(position: Int): Any {
-            return "test"
-        }
-
-        override fun getItemId(position: Int): Long {
-            return position.toLong()
-        }
-
-        /**
-         * Create row Display for list Item
-         */
-        override fun getView(position: Int, p1: View?, viewGroup: ViewGroup?): View {
-            val layoutInflater = LayoutInflater.from(mContext)
-
-            val item = mOrders[position]
-
-            val row = layoutInflater.inflate(R.layout.order_item_row, viewGroup, false)
-
-            // set up informations to display
-
-            // Availability Indicator
-            val indicator = row.findViewById<View>(R.id.availability_indicator)
-            val indicatorColor = getIndicatorColor(item.mMedicament.mAvailability, item.mMedicament.mApprovDate)
-            indicator.setBackgroundColor(indicatorColor)
-
-            // description
-            val description = row.findViewById<TextView>(R.id.order_item_description)
-
-            // title
-            val title = row.findViewById<TextView>(R.id.order_item_title)
-
-            // price
-            val itemPrice = row.findViewById<TextView>(R.id.order_item_price)
-
-            // reduction
-            val reduction = row.findViewById<TextView>(R.id.order_item_reduction)
-
-
-            // total price
-            val total = row.findViewById<TextView>(R.id.order_item_final_price)
-
-
-
-            // Check chemical's availability -> if not available but replacement is, display the replacement to user
-            val replacement: Medicament = item.mMedicament.getAvailableChemical()
-            if (replacement.mName !== item.mMedicament.mName) {
-                title.text = replacement.getInformations() + " (équivalent)"
-                description.text = "${item.mMedicament.mName} n'est pas disponible malheureusement"
-                total.text = formatFloat(replacement.getTotalPrice()) + "€"
-                reduction.text = "- " + formatFloat(item.getReduction()) + "€"
-                itemPrice.text = formatFloat(item.getPrice()) + "€"
-            } else {
-                title.text = item.mMedicament.getInformations()
-                description.text = getItemDescription(item.mMedicament)
-                total.text = formatFloat(item.getTotalPrice()) + "€"
-                reduction.text = "- " + formatFloat(item.getReduction()) + "€"
-                itemPrice.text = formatFloat(item.mMedicament.mPrice) + "€"
-            }
-
-
-            return row
-        }
-
-        /**
-         * Get Background color from item's availability
-         */
-        private fun getIndicatorColor(availabilty: Boolean, approvDate: String): Int {
-            var indicatorColor = ""
-            if (availabilty) {
-                indicatorColor = "#0bb07b"
-            } else if (!availabilty && (approvDate.length > 0)) {
-                indicatorColor = "#f8e71c"
-            } else {
-                indicatorColor = "#f56969"
-            }
-            return Color.parseColor(indicatorColor)
-        }
-
-        private fun getItemDescription(medicament: Medicament): String {
-            if (medicament.mAvailability) {
-                return "En Stock"
-            } else if (!medicament.mAvailability && medicament.mReplacement !== null) {
-                return "Remplacé par un autre médicament car l'orginal n'est pas en stock"
-            } else {
-                return "Disponible sous ${medicament.mApprovDate}"
-            }
-
-            return "Non Disponible dans cette pharmacie"
-        }
-
-        private fun formatFloat(nb: Float): String {
-            return "%.2f".format(nb)
-        }
     }
 }

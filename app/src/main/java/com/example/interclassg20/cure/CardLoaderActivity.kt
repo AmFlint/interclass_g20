@@ -12,7 +12,6 @@ import android.widget.TextView
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.fragment_card_loader.*
-import kotlinx.android.synthetic.main.fragment_test.*
 
 class CardLoaderActivity : Fragment() {
 
