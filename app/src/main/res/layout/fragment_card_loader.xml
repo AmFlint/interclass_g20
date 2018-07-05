@@ -20,8 +20,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <!-- Icon Loader -->
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/cl_icon_loader"
             android:layout_width="108dp"
             android:layout_height="106dp"
             android:layout_marginEnd="8dp"
@@ -35,7 +36,7 @@
             app:srcCompat="@drawable/pill" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/cl_command_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -52,11 +53,11 @@
             android:textStyle="normal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3"
+            app:layout_constraintTop_toBottomOf="@+id/cl_icon_loader"
             tools:text="Votre commande à :" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/cl_verification_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -67,7 +68,7 @@
             android:text="Pharmacie de l'ourcq"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/cl_command_text"
             android:textSize="20sp"
             android:fontFamily="sans-serif-medium"
             android:textStyle="normal"
@@ -95,7 +96,7 @@
             android:textStyle="normal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            app:layout_constraintTop_toBottomOf="@+id/cl_verification_text"
             tools:text="est en cours de préparation, la pharmacie va vérifier que tous les médicaments sur votre ordonnance sont disponibles avant de vous facturer." />
     </android.support.constraint.ConstraintLayout>
 

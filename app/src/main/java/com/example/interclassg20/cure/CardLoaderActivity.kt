@@ -23,6 +23,7 @@ class CardLoaderActivity : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        cl_icon_loader.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.fromClToDeliveryLoader))
         cancelButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.toOrdonnance))
     }
 }
