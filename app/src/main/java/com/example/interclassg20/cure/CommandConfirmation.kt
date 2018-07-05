@@ -12,23 +12,33 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 import kotlinx.android.synthetic.main.fragment_command_confirmation.*
 import org.w3c.dom.Text
+import kotlin.math.roundToInt
+import kotlin.math.roundToLong
 
+/**
+ * Command Confirmation Screen - Summary of cart (all chemicals) + price
+ */
 class CommandConfirmation : Fragment() {
 
     private var mOrders: Array<OrderItem>
+    private var mDescription: String
 
     init {
         val medicaments: Array<Medicament> = arrayOf(
-                Medicament ("Pravastine", 20, "mg", "3 comprimés par jours", 3.50f),
-                Medicament ("Paracétamol", 2, "g", "1 comprimé le soir", 4.99f),
-                Medicament ("Antibiotique", 4, "g", "2 comprimé le soir", 12.99f)
+                Medicament ("Pravastine", 20, "mg", "3 comprimés par jours", 3.50f, "2 jours", true, 3.50f),
+                Medicament ("Paracétamol", 2, "g", "1 comprimé le soir", 4.99f, "1 jour", false, 0f),
+                Medicament ("Antibiotique", 4, "g", "2 comprimé le soir", 12.99f, "", false, 0f)
         )
 
+        medicaments[2].mReplacement = Medicament("Doliprane", 500, "mg", "2 comprimés par jours", 6.99f, "2 jours", true, 5.50f)
+
         mOrders =  arrayOf(
-                OrderItem (medicaments[0], 3.50f, true),
-                OrderItem (medicaments[1], 0f, false),
-                OrderItem (medicaments[2], 0f, true)
+                OrderItem (medicaments[0]),
+                OrderItem (medicaments[1]),
+                OrderItem (medicaments[2])
         )
+        // Initialize Command description
+        mDescription = ""
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -63,16 +73,16 @@ class CommandConfirmation : Fragment() {
 
         // Set up price
         val price = total_price.findViewById<TextView>(R.id.order_item_price)
-        price.text = "63.33€"
+        price.text = "%.2f".format(getNotReductedPrice()) + "€"
 
         // set up reduction
         val reduction = total_price.findViewById<TextView>(R.id.order_item_reduction)
-        reduction.text = "- 52€"
+        reduction.text = "- " + "%.2f".format(getTotalReduction()) + "€"
 
         // Set up total price
         val total = total_price.findViewById<TextView>(R.id.order_item_final_price)
         val totalPrice = getTotalPrice()
-        total.text = totalPrice.toString() + "€"
+        total.text = "%.2f".format(totalPrice) + "€"
         total.textSize = 24f
     }
 
@@ -85,6 +95,34 @@ class CommandConfirmation : Fragment() {
         // loop on items to get total price
         for (item in mOrders) {
             totalPrice += item.getTotalPrice()
+        }
+
+        return totalPrice
+    }
+
+    /**
+     * Get Total reductions applied together
+     */
+    private fun getTotalReduction(): Float {
+        var totalRed = 0f
+
+        // add all reductions
+        for (item in mOrders) {
+            totalRed += item.mMedicament.mReduction
+        }
+
+        return totalRed
+    }
+
+    /**
+     * Get Order price before applying reductions
+     */
+    private fun getNotReductedPrice(): Float {
+        var totalPrice = 0f
+
+        // Add all prices
+        for (item in mOrders) {
+            totalPrice += item.mMedicament.mPrice
         }
 
         return totalPrice
@@ -128,24 +166,43 @@ class CommandConfirmation : Fragment() {
 
             // Availability Indicator
             val indicator = row.findViewById<View>(R.id.availability_indicator)
-            val indicatorColor = getIndicatorColor(item.mAvailability)
+            val indicatorColor = getIndicatorColor(item.mMedicament.mAvailability, item.mMedicament.mApprovDate)
             indicator.setBackgroundColor(indicatorColor)
+
+            // description
+            val description = row.findViewById<TextView>(R.id.order_item_description)
 
             // title
             val title = row.findViewById<TextView>(R.id.order_item_title)
-            title.text = item.mMedicament.getInformations()
 
             // price
             val itemPrice = row.findViewById<TextView>(R.id.order_item_price)
-            itemPrice.text = item.mMedicament.mPrice.toString() + "€"
 
             // reduction
             val reduction = row.findViewById<TextView>(R.id.order_item_reduction)
-            reduction.text = item.mReduction.toString() + "€"
+
 
             // total price
             val total = row.findViewById<TextView>(R.id.order_item_final_price)
-            total.text = item.getTotalPrice().toString() + "€"
+
+
+
+            // Check chemical's availability -> if not available but replacement is, display the replacement to user
+            val replacement: Medicament = item.mMedicament.getAvailableChemical()
+            if (replacement.mName !== item.mMedicament.mName) {
+                title.text = replacement.getInformations() + " (équivalent)"
+                description.text = "${item.mMedicament.mName} n'est pas disponible malheureusement"
+                total.text = formatFloat(replacement.getTotalPrice()) + "€"
+                reduction.text = "- " + formatFloat(item.getReduction()) + "€"
+                itemPrice.text = formatFloat(item.getPrice()) + "€"
+            } else {
+                title.text = item.mMedicament.getInformations()
+                description.text = getItemDescription(item.mMedicament)
+                total.text = formatFloat(item.getTotalPrice()) + "€"
+                reduction.text = "- " + formatFloat(item.getReduction()) + "€"
+                itemPrice.text = formatFloat(item.mMedicament.mPrice) + "€"
+            }
+
 
             return row
         }
@@ -153,38 +210,55 @@ class CommandConfirmation : Fragment() {
         /**
          * Get Background color from item's availability
          */
-        private fun getIndicatorColor(availabilty: Boolean): Int {
+        private fun getIndicatorColor(availabilty: Boolean, approvDate: String): Int {
             var indicatorColor = ""
-            when (availabilty) {
-                true -> indicatorColor = "#0bb07b"
-                false -> indicatorColor = "#f56969"
-
+            if (availabilty) {
+                indicatorColor = "#0bb07b"
+            } else if (!availabilty && (approvDate.length > 0)) {
+                indicatorColor = "#f8e71c"
+            } else {
+                indicatorColor = "#f56969"
             }
             return Color.parseColor(indicatorColor)
         }
 
+        private fun getItemDescription(medicament: Medicament): String {
+            if (medicament.mAvailability) {
+                return "En Stock"
+            } else if (!medicament.mAvailability && medicament.mReplacement !== null) {
+                return "Remplacé par un autre médicament car l'orginal n'est pas en stock"
+            } else {
+                return "Disponible sous ${medicament.mApprovDate}"
+            }
+
+            return "Non Disponible dans cette pharmacie"
+        }
+
+        private fun formatFloat(nb: Float): String {
+            return "%.2f".format(nb)
+        }
     }
 }
 
 /**
  * Order Item Object
  */
-class OrderItem(medicament: Medicament, reduction: Float, availability: Boolean) {
+class OrderItem(medicament: Medicament) {
     val mMedicament: Medicament
-    val mReduction: Float
-    val mAvailability: Boolean
 
     init {
-        mReduction = reduction
         mMedicament = medicament
-        mAvailability = availability
     }
 
-    /**
-     * Get Total price of an order item -> Apply reduction to medicament price
-     */
     fun getTotalPrice(): Float {
-        val price = mMedicament.mPrice - mReduction
-        return price
+        return mMedicament.getAvailableChemical().getTotalPrice()
+    }
+
+    fun getReduction(): Float {
+        return mMedicament.getAvailableChemical().mReduction
+    }
+
+    fun getPrice(): Float {
+        return mMedicament.getAvailableChemical().mPrice
     }
 }
