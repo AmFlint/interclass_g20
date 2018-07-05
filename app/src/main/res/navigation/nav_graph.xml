@@ -53,8 +53,8 @@
             app:destination="@id/deliveryLoader"
             />
         <action
-            android:id="@+id/toDelivery"
-            app:destination="@id/delivery"
+            android:id="@+id/toDelivery1"
+            app:destination="@id/delivery1"
             />
     </fragment>
 
@@ -80,10 +80,21 @@
     </fragment>
 
     <fragment
-        android:id="@+id/delivery"
-        android:name="com.example.interclassg20.cure.DeliveryActivity"
-        android:label="fragment_delivery"
-        tools:layout="@layout/fragment_delivery">
+        android:id="@+id/delivery1"
+        android:name="com.example.interclassg20.cure.Delivery1Activity"
+        android:label="fragment_delivery_1"
+        tools:layout="@layout/fragment_delivery_1">
+        <action
+            android:id="@+id/toDelivery2"
+            app:destination="@id/delivery2"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/delivery2"
+        android:name="com.example.interclassg20.cure.Delivery2Activity"
+        android:label="fragment_delivery_2"
+        tools:layout="@layout/fragment_delivery_2">
         <action
             android:id="@+id/toOrdonnance"
             app:destination="@id/ordonnance"
