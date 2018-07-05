@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_command_confirmation.*
 import org.w3c.dom.Text
 import kotlin.math.roundToInt
@@ -49,6 +50,9 @@ class CommandConfirmation : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        cancel_command.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.fromCmdToOrdonnance))
+        command_button.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.toCardLoader))
 
         order_items_list.adapter = OrderAdapter(requireActivity(), mOrders)
 

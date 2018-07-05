@@ -83,5 +83,14 @@
         android:id="@+id/commandConfirmation"
         android:name="com.example.interclassg20.cure.CommandConfirmation"
         android:label="fragment_command_confirmation"
-        tools:layout="@layout/fragment_command_confirmation" />
+        tools:layout="@layout/fragment_command_confirmation">
+        <action
+            android:id="@+id/toCardLoader"
+            app:destination="@id/cardLoader"
+            />
+        <action
+            android:id="@+id/fromCmdToOrdonnance"
+            app:destination="@id/ordonnance"
+            />
+    </fragment>
 </navigation>

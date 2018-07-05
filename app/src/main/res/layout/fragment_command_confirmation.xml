@@ -136,6 +136,7 @@
 
             <!-- Cancel -->
             <Button
+                android:id="@+id/cancel_command"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/command_button"
