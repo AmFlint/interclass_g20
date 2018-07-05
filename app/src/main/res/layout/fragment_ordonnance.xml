@@ -145,7 +145,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
-                android:background="#3caaa2"
+                android:background="@drawable/border_greeny_blue_button"
                 android:paddingBottom="5dp"
                 android:paddingTop="5dp"
                 >
@@ -179,7 +179,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
-                android:background="#21898b"
+                android:background="@drawable/border_blue_button"
                 android:layout_marginTop="20dp"
                 android:paddingBottom="5dp"
                 android:paddingTop="5dp"
@@ -212,7 +212,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
-                android:background="#0bb07b"
+                android:background="@drawable/border_green_button"
                 android:layout_marginTop="20dp"
                 android:paddingBottom="5dp"
                 android:paddingTop="5dp"
@@ -291,7 +291,7 @@
                 android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:orientation="horizontal"
-                android:background="#3caaa2"
+                android:background="@drawable/border_greeny_blue_button"
                 android:layout_marginTop="40dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
@@ -320,7 +320,7 @@
                     />
             </LinearLayout>
 
-            <!-- Add to rappels Button -->
+            <!-- Go To Pharmacy Button -->
             <LinearLayout
                 android:id="@+id/pharmacy_btn"
                 style="?android:attr/buttonBarButtonStyle"
@@ -328,7 +328,7 @@
                 android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:orientation="horizontal"
-                android:background="#21898b"
+                android:background="@drawable/border_blue_button"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"

@@ -20,6 +20,12 @@
             android:name=".NavigActivity"
             android:label="@string/title_activity_navig"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-    </application>
 
+        <!-- Google Map API Key -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyC1hqfu-Xtqtl9S032DuXco4ooZDxJJ1Fc" />
+    </application>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 </manifest>

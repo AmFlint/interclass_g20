@@ -25,13 +25,14 @@ class Ordonnance : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        delivery_btn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.toCardLoader))
-        pharmacy_btn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.toCommandConfirmation))
+        delivery_btn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.toDelivery1))
+        pharmacy_btn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.fromOrdonnanceToSearchPharmacy))
 
         val medicaments: Array<Medicament> = arrayOf(
                 Medicament ("Pravastine", 20, "mg", "3 comprimés par jours", 3.50f, "tomorrow", true, 0f),
                 Medicament ("Paracétamol", 2, "g", "1 comprimé le soir", 4.99f, "tommorow", false, 0f)
         )
+
 
         medical_list.adapter = MedicamentAdapter(requireActivity(), medicaments)
 
@@ -41,8 +42,6 @@ class Ordonnance : Fragment() {
             commandActions.visibility = View.VISIBLE
         })
 
-//        val actionBar = requireActivity().actionBar
-////        actionBar.title = R.string.ordonnance_name.toString()
         requireActivity().setTitle(R.string.ordonnance_name)
     }
 

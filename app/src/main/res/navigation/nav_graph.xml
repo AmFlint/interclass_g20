@@ -56,6 +56,14 @@
             android:id="@+id/toCommandConfirmation"
             app:destination="@id/commandConfirmation"
             />
+        <action
+            android:id="@+id/toDelivery1"
+            app:destination="@id/delivery1"
+            />
+        <action
+            android:id="@+id/fromOrdonnanceToSearchPharmacy"
+            app:destination="@id/searchPharmacy"
+            />
     </fragment>
 
     <fragment
@@ -90,6 +98,65 @@
             />
         <action
             android:id="@+id/fromCmdToOrdonnance"
+            app:destination="@id/ordonnance" />
+        <action
+            android:id="@+id/fromCmdToSearchPharmacy"
+            app:destination="@id/searchPharmacy"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/delivery1"
+        android:name="com.example.interclassg20.cure.Delivery1Activity"
+        android:label="fragment_delivery_1"
+        tools:layout="@layout/fragment_delivery_1">
+        <action
+            android:id="@+id/toDelivery2"
+            app:destination="@id/delivery2"
+            />
+        <action
+            android:id="@+id/toOrdonnance"
+            app:destination="@id/ordonnance"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/searchPharmacy"
+        android:name="com.example.interclassg20.cure.SearchPharmacy"
+        android:label="fragment_search_pharmacy"
+        tools:layout="@layout/fragment_search_pharmacy"
+        >
+        <action
+            android:id="@+id/fromMapToCmdConfirmation"
+            app:destination="@id/commandConfirmation" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/delivery2"
+        android:name="com.example.interclassg20.cure.Delivery2Activity"
+        android:label="fragment_delivery_2"
+        tools:layout="@layout/fragment_delivery_2">
+        <action
+            android:id="@+id/toDelivery1"
+            app:destination="@id/delivery1"
+            />
+        <action
+            android:id="@+id/toDelivery3"
+            app:destination="@id/delivery3"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/delivery3"
+        android:name="com.example.interclassg20.cure.Delivery3Activity"
+        android:label="fragment_delivery_3"
+        tools:layout="@layout/fragment_delivery_3">
+        <action
+            android:id="@+id/toDelivery2"
+            app:destination="@id/delivery2"
+            />
+        <action
+            android:id="@+id/toOrdonnance"
             app:destination="@id/ordonnance"
             />
     </fragment>
