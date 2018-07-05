@@ -35,5 +35,7 @@ class ItineraryConfirmationActivity : Fragment() {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
             context!!.startActivity(intent)
         })
+
+        requireActivity().setTitle(R.string.itinerary)
     }
 }

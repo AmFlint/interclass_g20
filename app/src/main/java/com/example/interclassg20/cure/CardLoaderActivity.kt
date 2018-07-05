@@ -39,5 +39,7 @@ class CardLoaderActivity : Fragment() {
             it.findNavController().navigate(R.id.fromClToItinerary, bundle)
         })
         cancelButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.toOrdonnance))
+
+        requireActivity().setTitle(R.string.preparation)
     }
 }

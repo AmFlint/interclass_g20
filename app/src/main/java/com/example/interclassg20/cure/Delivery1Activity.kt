@@ -24,5 +24,7 @@ class Delivery1Activity : Fragment() {
         deliveryManImage.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.toDelivery2))
         deliveryDoneImage.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.toDelivery2))
         backButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.toOrdonnance))
+
+        requireActivity().setTitle(R.string.delivery)
     }
 }
