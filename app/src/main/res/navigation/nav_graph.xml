@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/ordonnance">
+    app:startDestination="@id/searchPharmacy">
 
     <fragment
         android:id="@+id/test"
@@ -75,6 +75,10 @@
         android:id="@+id/toOrdonnance"
         app:destination="@id/ordonnance"
         />
+    <action
+        android:id="@+id/fromClToDeliveryLoader"
+        app:destination="@id/deliveryLoader"
+        />
     </fragment>
     <fragment
         android:id="@+id/deliveryLoader"
@@ -102,6 +106,11 @@
         <action
             android:id="@+id/fromCmdToSearchPharmacy"
             app:destination="@id/searchPharmacy"
+            />
+        <argument
+            android:name="pharmacy_name"
+            android:defaultValue="Pharmacie de l'Ourcq"
+            app:type="string"
             />
     </fragment>
 
