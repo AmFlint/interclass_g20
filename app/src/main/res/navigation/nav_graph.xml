@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/commandConfirmation">
+    app:startDestination="@id/ordonnance">
 
     <fragment
         android:id="@+id/test"
@@ -51,6 +51,10 @@
         <action
             android:id="@+id/toDeliveryLoader"
             app:destination="@id/deliveryLoader"
+            />
+        <action
+            android:id="@+id/toCommandConfirmation"
+            app:destination="@id/commandConfirmation"
             />
     </fragment>
 
