@@ -67,6 +67,8 @@ class SearchPharmacy : Fragment(), OnMapReadyCallback, GoogleMap.OnInfoWindowCli
         // Initialize Google Map via fragment
         setUpMap()
         setUpAutocomplete()
+
+        requireActivity().setTitle(R.string.pharmacy)
     }
 
     /**

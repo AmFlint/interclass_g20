@@ -71,6 +71,8 @@ class CommandConfirmation : Fragment() {
         var listParams = order_items_list.layoutParams
         listParams.height = (mOrders.size * 370) + (20 * mOrders.size)
         setUpTotal()
+
+        requireActivity().setTitle(R.string.confirmation)
     }
 
     /**

@@ -1,7 +1,12 @@
 <resources>
-    <string name="app_name">cure</string>
+    <string name="app_name">Cure</string>
 
-    <string name="ordonnance_name">Retour</string>
+    <string name="ordonnance_name">Ordonnance</string>
+    <string name="delivery">Livraison</string>
+    <string name="pharmacy">Recherche d\'une pharmacie</string>
+    <string name="itinerary">Itinéraire</string>
+    <string name="confirmation">Disponibilité</string>
+    <string name="preparation">Préparation</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -12,6 +17,6 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-    <string name="hey">Bonjour Nino</string>
+    <string name="hey">Cure</string>
     <string name="title_activity_navig">NavigActivity</string>
 </resources>
