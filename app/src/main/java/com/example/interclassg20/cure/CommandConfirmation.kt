@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.fragment_command_confirmation.*
 import org.w3c.dom.Text
 import kotlin.math.roundToInt
@@ -51,11 +52,19 @@ class CommandConfirmation : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        println(arguments!!.getString("pharmacy°name"))
-        command_confirmation_pharmacy_name.text = arguments!!.getString("pharmacy_name")
+        // Display Pharmacy Name from which user is ordering chemicals
+        val pharmacyName = arguments!!.getString("pharmacy_name")
+        command_confirmation_pharmacy_name.text = pharmacyName
+
+        // Navigate to Pharmacy Loader Screen with pharmacy name as arg
+        command_button.setOnClickListener({
+            val bundle = Bundle()
+            bundle.putString("pharmacy_name", pharmacyName)
+            bundle.putString("pharmacy_address", arguments!!.getString("pharmacy_address"))
+            it.findNavController().navigate(R.id.toCardLoader, bundle)
+        })
 
         cancel_command.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.fromCmdToSearchPharmacy))
-        command_button.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.toCardLoader))
 
         order_items_list.adapter = OrderAdapter(requireActivity(), mOrders)
 

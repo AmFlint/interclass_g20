@@ -60,6 +60,7 @@ class SearchPharmacy : Fragment(), OnMapReadyCallback, GoogleMap.OnInfoWindowCli
             val place = mSelectedPlace as Place
             val bundle = Bundle()
             bundle.putString("pharmacy_name", place.name.toString())
+            bundle.putString("pharmacy_address", place.address.toString())
             it.findNavController().navigate(R.id.fromMapToCmdConfirmation, bundle)
         })
 
