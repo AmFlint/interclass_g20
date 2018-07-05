@@ -51,8 +51,11 @@ class CommandConfirmation : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        cancel_command.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.fromCmdToOrdonnance))
-        command_button.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.fromCmdToSearchPharmacy))
+        println(arguments!!.getString("pharmacy°name"))
+        command_confirmation_pharmacy_name.text = arguments!!.getString("pharmacy_name")
+
+        cancel_command.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.fromCmdToSearchPharmacy))
+        command_button.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.toCardLoader))
 
         order_items_list.adapter = OrderAdapter(requireActivity(), mOrders)
 
