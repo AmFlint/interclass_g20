@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#fff"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".DeliveryLoaderActivity">
+    tools:context=".CardLoaderActivity">
 
 
     <android.support.constraint.ConstraintLayout
@@ -35,24 +35,46 @@
             app:srcCompat="@drawable/pill" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="56dp"
+            android:alpha=".45"
             android:fontFamily="sans-serif-medium"
             android:gravity="center_horizontal"
-            android:text="En recherche d’une pharmacie"
+            android:text="Votre commande à :"
             android:textColor="@color/viridian"
             android:textSize="20sp"
             android:textStyle="normal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView3"
-            tools:text="En recherche d’une pharmacie" />
+            tools:text="Votre commande à :" />
+
+        <TextView
+            android:id="@+id/itinerary_pharmacy_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Pharmacie de l'ourcq"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            android:textSize="20sp"
+            android:fontFamily="sans-serif-medium"
+            android:textStyle="normal"
+            android:textColor="@color/viridian"
+            android:gravity="center_horizontal"
+            tools:text="Pharmacie de l&apos;ourcq"
+            />
 
         <TextView
             android:id="@+id/textView4"
@@ -62,25 +84,25 @@
             android:layout_marginLeft="24dp"
             android:layout_marginRight="24dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             android:fontFamily="sans-serif"
             android:gravity="center_horizontal"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
-            android:text="Nous recherchons une pharmacie qui pourra répondre au mieux à votre ordonnance."
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:text="est prête ! Vous pouvez la récupérer en pharmacie dès maintenant."
             android:textColor="@color/dark_grey_blue"
             android:textSize="14sp"
             android:textStyle="normal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3"
-            tools:text="Nous recherchons une pharmacie qui pourra répondre au mieux à votre ordonnance." />
+            app:layout_constraintTop_toBottomOf="@+id/itinerary_pharmacy_name"
+            tools:text="est prête ! Vous pouvez la récupérer en pharmacie dès maintenant." />
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/buttonsLayout"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="166dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -95,23 +117,43 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/cancelButton"
+            android:id="@+id/itineraryButton"
+            style="?android:attr/borderlessButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="40dp"
             android:layout_marginEnd="24dp"
             android:layout_marginLeft="24dp"
             android:layout_marginRight="24dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/border_red_button"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/border_green_button"
+            android:text="Itinéraire"
             android:textAllCaps="false"
             android:textColor="#fff"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider"
+            tools:text="Itinéraire" />
+
+        <Button
+            android:id="@+id/okButton"
             style="?android:attr/borderlessButtonStyle"
-            android:text="Annuler"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/border_viridian_button"
+            android:text="Ok"
+            android:textAllCaps="false"
+            android:textColor="#fff"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/itineraryButton" />
+
     </android.support.constraint.ConstraintLayout>
 </android.support.constraint.ConstraintLayout>

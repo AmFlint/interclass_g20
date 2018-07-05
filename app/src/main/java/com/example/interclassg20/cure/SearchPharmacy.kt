@@ -23,6 +23,7 @@ import androidx.navigation.*
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.maps.model.Marker
 import android.view.InflateException
+import android.widget.TextView
 import com.google.android.gms.maps.SupportMapFragment
 import kotlinx.android.synthetic.main.activity_consultation.*
 
@@ -38,9 +39,9 @@ class SearchPharmacy : Fragment(), OnMapReadyCallback, GoogleMap.OnInfoWindowCli
     private var gMap: GoogleMap? = null
 
     /**
-     * Selected Pharmacy Name
+     * Selected Place Object
      */
-    private var selectedPharmacy = ""
+    private var mSelectedPlace: Place? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -48,14 +49,43 @@ class SearchPharmacy : Fragment(), OnMapReadyCallback, GoogleMap.OnInfoWindowCli
         return inflater.inflate(R.layout.fragment_search_pharmacy, container, false)
     }
 
+    /**
+     * Triggered when View gets created
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Initialize Google Map via fragment
+        // On Click to command button, get selected pharmacy and pass name to command confirmation view
+        search_pharmacy_command.setOnClickListener(View.OnClickListener {
+            val place = mSelectedPlace as Place
+            val bundle = Bundle()
+            bundle.putString("pharmacy_name", place.name.toString())
+            bundle.putString("pharmacy_address", place.address.toString())
+            it.findNavController().navigate(R.id.fromMapToCmdConfirmation, bundle)
+        })
 
+        // Initialize Google Map via fragment
+        setUpMap()
+        setUpAutocomplete()
+    }
+
+    /**
+     * Destroy PlaceAutoCompleteFragment to prevent crashes when fragment gets created again
+     */
+    override fun onDestroyView() {
+        super.onDestroyView()
+        val fm = requireActivity().fragmentManager
+        val fragment = fm.findFragmentById(R.id.place_autocomplete_fragment) as PlaceAutocompleteFragment
+        val ft = fm.beginTransaction()
+        ft.remove(fragment)
+        ft.commit()
+    }
+
+    fun setUpMap() {
         val fm = childFragmentManager
         var mapFragment = fm.findFragmentByTag("mapFragment") as SupportMapFragment?
 
+        // Check that map Fragment exists before recreating it, causing a crash for duplicate id
         if (mapFragment == null) {
             mapFragment = SupportMapFragment()
             val ft = fm.beginTransaction()
@@ -66,16 +96,6 @@ class SearchPharmacy : Fragment(), OnMapReadyCallback, GoogleMap.OnInfoWindowCli
 
         val mapFrag = mapFragment as SupportMapFragment
         mapFrag.getMapAsync(this)
-        setUpAutocomplete()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        val fm = requireActivity().fragmentManager
-        val fragment = fm.findFragmentById(R.id.place_autocomplete_fragment) as PlaceAutocompleteFragment
-        val ft = fm.beginTransaction()
-        ft.remove(fragment)
-        ft.commit()
     }
 
     /**
@@ -91,6 +111,10 @@ class SearchPharmacy : Fragment(), OnMapReadyCallback, GoogleMap.OnInfoWindowCli
                 LatLng(48.892082, 2.318417)))
 
         autocompleteFragment.setOnPlaceSelectedListener(object : PlaceSelectionListener {
+            /**
+             * Handler called when a place is selected in auto complete bar
+             * Select a Pharmacy, put a pin on it
+             */
             override fun onPlaceSelected(place: Place) {
                 if (!placeIsPharmacy(place)) {
                     val snackBar = Snackbar.make(view as View, "Veuillez sélectionner une pharmacie s'il vous plait", Snackbar.LENGTH_LONG)
@@ -98,16 +122,37 @@ class SearchPharmacy : Fragment(), OnMapReadyCallback, GoogleMap.OnInfoWindowCli
                     return
                 }
 
-                selectedPharmacy = place.name.toString()
+                // Display pharmacy Informations
+                mSelectedPlace = place
+                displaySelectedPharmacy()
+
                 moveCamera(place.latLng)
                 placeMarker(place.latLng, place.name.toString())
             }
 
+            /**
+             * Gets called when an error occurs
+             */
             override fun onError(status: com.google.android.gms.common.api.Status) {
                 println("error: $status")
             }
         })
 
+    }
+
+    fun displaySelectedPharmacy() {
+        if (mSelectedPlace == null) {
+            return
+        }
+
+        val place = mSelectedPlace as Place
+        // Name
+        selected_pharmacy_name.text = place.name
+        // Address
+        selected_pharmacy_address.text = place.address
+        // Opens at
+
+        selected_pharmacy.visibility = View.VISIBLE
     }
 
     /**
@@ -153,8 +198,6 @@ class SearchPharmacy : Fragment(), OnMapReadyCallback, GoogleMap.OnInfoWindowCli
      * Click on Info Windows
      */
     override fun onInfoWindowClick(marker: Marker) {
-        // TODO: Pass with arguments
-        // Navigate to command page
-        findNavController().navigate(R.id.fromMapToCmdConfirmation)
+        displaySelectedPharmacy()
     }
 }

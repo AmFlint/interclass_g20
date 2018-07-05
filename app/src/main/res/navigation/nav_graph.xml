@@ -64,6 +64,10 @@
             android:id="@+id/fromOrdonnanceToSearchPharmacy"
             app:destination="@id/searchPharmacy"
             />
+        <action
+            android:id="@+id/toItineraryConfirmation"
+            app:destination="@id/itineraryConfirmation"
+            />
     </fragment>
 
     <fragment
@@ -74,6 +78,24 @@
     <action
         android:id="@+id/toOrdonnance"
         app:destination="@id/ordonnance"
+        />
+    <action
+        android:id="@+id/fromClToDeliveryLoader"
+        app:destination="@id/deliveryLoader"
+        />
+    <action
+        android:id="@+id/fromClToItinerary"
+        app:destination="@id/itineraryConfirmation"
+        />
+    <argument
+        android:name="pharmacy_name"
+        android:defaultValue="Pharmacie de l'Ourcq"
+        app:type="string"
+        />
+    <argument
+        android:name="pharmacy_address"
+        android:defaultValue="pharmacuie address"
+        app:type="string"
         />
     </fragment>
     <fragment
@@ -102,6 +124,16 @@
         <action
             android:id="@+id/fromCmdToSearchPharmacy"
             app:destination="@id/searchPharmacy"
+            />
+        <argument
+            android:name="pharmacy_name"
+            android:defaultValue="Pharmacie de l'Ourcq"
+            app:type="string"
+            />
+        <argument
+            android:name="pharmacy_address"
+            android:defaultValue="Address pharmacy"
+            app:type="string"
             />
     </fragment>
 
@@ -158,6 +190,27 @@
         <action
             android:id="@+id/toOrdonnance"
             app:destination="@id/ordonnance"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/itineraryConfirmation"
+        android:name="com.example.interclassg20.cure.ItineraryConfirmationActivity"
+        android:label="fragment_itinerary_confirmation"
+        tools:layout="@layout/fragment_itinerary_confirmation">
+        <action
+            android:id="@+id/toOrdonnance"
+            app:destination="@id/ordonnance"
+            />
+        <argument
+            android:name="pharmacy_name"
+            android:defaultValue="Pharmacie de l'Ourcq"
+            app:type="string"
+            />
+        <argument
+            android:name="pharmacy_address"
+            android:defaultValue="address pharmacy"
+            app:type="string"
             />
     </fragment>
 </navigation>
