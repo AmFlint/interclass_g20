@@ -87,22 +87,22 @@
             android:layout_marginTop="24dp"
             android:fontFamily="sans-serif"
             android:gravity="center_horizontal"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
-            android:text="est en cours de préparation, la pharmacie va vérifier que tous les médicaments sur votre ordonnance sont disponibles avant de vous facturer."
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:text="est prête ! Vous pouvez la récupérer en pharmacie dès maintenant."
             android:textColor="@color/dark_grey_blue"
             android:textSize="14sp"
             android:textStyle="normal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3"
-            tools:text="est en cours de préparation, la pharmacie va vérifier que tous les médicaments sur votre ordonnance sont disponibles avant de vous facturer." />
+            tools:text="est prête ! Vous pouvez la récupérer en pharmacie dès maintenant." />
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/buttonsLayout"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="166dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -117,23 +117,43 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/cancelButton"
+            android:id="@+id/itineraryButton"
+            style="?android:attr/borderlessButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="40dp"
             android:layout_marginEnd="24dp"
             android:layout_marginLeft="24dp"
             android:layout_marginRight="24dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/border_red_button"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/border_green_button"
+            android:text="Itinéraire"
             android:textAllCaps="false"
             android:textColor="#fff"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider"
+            tools:text="Itinéraire" />
+
+        <Button
+            android:id="@+id/okButton"
             style="?android:attr/borderlessButtonStyle"
-            android:text="Annuler"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/border_viridian_button"
+            android:text="Ok"
+            android:textAllCaps="false"
+            android:textColor="#fff"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/itineraryButton" />
+
     </android.support.constraint.ConstraintLayout>
 </android.support.constraint.ConstraintLayout>
