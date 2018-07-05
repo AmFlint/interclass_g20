@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/consultationHistory">
+    app:startDestination="@id/ordonnance">
 
     <fragment
         android:id="@+id/test"
@@ -52,6 +52,10 @@
             android:id="@+id/toDeliveryLoader"
             app:destination="@id/deliveryLoader"
             />
+        <action
+            android:id="@+id/toCommandConfirmation"
+            app:destination="@id/commandConfirmation"
+            />
     </fragment>
 
     <fragment
@@ -71,6 +75,21 @@
         tools:layout="@layout/fragment_delivery_loader">
         <action
             android:id="@+id/toOrdonnance"
+            app:destination="@id/ordonnance"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/commandConfirmation"
+        android:name="com.example.interclassg20.cure.CommandConfirmation"
+        android:label="fragment_command_confirmation"
+        tools:layout="@layout/fragment_command_confirmation">
+        <action
+            android:id="@+id/toCardLoader"
+            app:destination="@id/cardLoader"
+            />
+        <action
+            android:id="@+id/fromCmdToOrdonnance"
             app:destination="@id/ordonnance"
             />
     </fragment>
