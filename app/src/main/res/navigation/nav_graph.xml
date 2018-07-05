@@ -60,6 +60,10 @@
             android:id="@+id/toDelivery1"
             app:destination="@id/delivery1"
             />
+        <action
+            android:id="@+id/fromOrdonnanceToSearchPharmacy"
+            app:destination="@id/searchPharmacy"
+            />
     </fragment>
 
     <fragment

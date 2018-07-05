@@ -26,7 +26,7 @@ class Ordonnance : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         delivery_btn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.toDelivery1))
-        pharmacy_btn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.toCommandConfirmation))
+        pharmacy_btn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.fromOrdonnanceToSearchPharmacy))
 
         val medicaments: Array<Medicament> = arrayOf(
                 Medicament ("Pravastine", 20, "mg", "3 comprimés par jours", 3.50f, "tomorrow", true, 0f),

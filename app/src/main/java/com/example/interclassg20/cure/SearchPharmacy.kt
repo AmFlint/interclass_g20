@@ -22,12 +22,14 @@ import android.widget.Toast
 import androidx.navigation.*
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.maps.model.Marker
+import android.view.InflateException
+import com.google.android.gms.maps.SupportMapFragment
+import kotlinx.android.synthetic.main.activity_consultation.*
 
 
-
-
-
-
+/**
+ * Screen - Search Pharmacy on Google Map
+ */
 class SearchPharmacy : Fragment(), OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
 
     /**
@@ -50,10 +52,30 @@ class SearchPharmacy : Fragment(), OnMapReadyCallback, GoogleMap.OnInfoWindowCli
         super.onViewCreated(view, savedInstanceState)
 
         // Initialize Google Map via fragment
-        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
-        mapFragment.getMapAsync(this)
 
+        val fm = childFragmentManager
+        var mapFragment = fm.findFragmentByTag("mapFragment") as SupportMapFragment?
+
+        if (mapFragment == null) {
+            mapFragment = SupportMapFragment()
+            val ft = fm.beginTransaction()
+            ft.add(R.id.mapFragmentContainer, mapFragment, "mapFragment")
+            ft.commit()
+            fm.executePendingTransactions()
+        }
+
+        val mapFrag = mapFragment as SupportMapFragment
+        mapFrag.getMapAsync(this)
         setUpAutocomplete()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        val fm = requireActivity().fragmentManager
+        val fragment = fm.findFragmentById(R.id.place_autocomplete_fragment) as PlaceAutocompleteFragment
+        val ft = fm.beginTransaction()
+        ft.remove(fragment)
+        ft.commit()
     }
 
     /**
@@ -95,7 +117,7 @@ class SearchPharmacy : Fragment(), OnMapReadyCallback, GoogleMap.OnInfoWindowCli
         gMap = googleM
         val heticLatLng = LatLng(48.852281, 2.420647)
         moveCamera(heticLatLng)
-        googleM.animateCamera(CameraUpdateFactory.zoomTo(13f))
+        googleM.animateCamera(CameraUpdateFactory.zoomTo(15f))
 
         googleM.setOnInfoWindowClickListener(this);
     }
