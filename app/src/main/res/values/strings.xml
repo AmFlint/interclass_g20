@@ -5,10 +5,9 @@
     <string name="delivery">Livraison</string>
     <string name="pharmacy">Recherche d\'une pharmacie</string>
     <string name="itinerary">Itinéraire</string>
-    <string name="confirmation">Disponibilité</string>
+    <string name="confirmation">Votre Commande</string>
     <string name="preparation">Préparation</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_main2">Main2Activity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>

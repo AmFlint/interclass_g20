@@ -59,6 +59,9 @@ class DeliveryConfirmation : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Set AppBar Title
+        requireActivity().setTitle(R.string.confirmation)
+
         delivery_total_price.findViewById<TextView>(R.id.order_item_description).text = "Le prix total prend en compte les réductions ainsi que les frais de livraison"
 
 
